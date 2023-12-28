@@ -13,7 +13,6 @@
       <bpmn:outgoing>Flow_0kfwyky</bpmn:outgoing>
       <bpmn:outgoing>Flow_0nnmem2</bpmn:outgoing>
       <bpmn:outgoing>Flow_0kaqy58</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0wpdwfv</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_0kfwyky" sourceRef="Gateway_0d9z6xl" targetRef="Activity_1o1y3wh" />
     <bpmn:serviceTask id="Activity_1o1y3wh" name="Check travel cost">
@@ -44,21 +43,11 @@
       <bpmn:incoming>Flow_0rilr6w</bpmn:incoming>
       <bpmn:incoming>Flow_0kv3zhl</bpmn:incoming>
       <bpmn:incoming>Flow_0msxzz8</bpmn:incoming>
-      <bpmn:incoming>Flow_1noodan</bpmn:incoming>
       <bpmn:outgoing>Flow_1nc27uk</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_0kv3zhl" sourceRef="Activity_15mzv5p" targetRef="Gateway_00dafjc" />
     <bpmn:sequenceFlow id="Flow_0msxzz8" sourceRef="Activity_00fa4a2" targetRef="Gateway_00dafjc" />
     <bpmn:sequenceFlow id="Flow_1nc27uk" sourceRef="Gateway_00dafjc" targetRef="Event_16vd6o8" />
-    <bpmn:sequenceFlow id="Flow_0wpdwfv" sourceRef="Gateway_0d9z6xl" targetRef="Activity_16qgbyc" />
-    <bpmn:sequenceFlow id="Flow_1noodan" sourceRef="Activity_16qgbyc" targetRef="Gateway_00dafjc" />
-    <bpmn:serviceTask id="Activity_16qgbyc" name="Check travel destination">
-      <bpmn:extensionElements>
-        <zeebe:taskDefinition type="check-travel-destination" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0wpdwfv</bpmn:incoming>
-      <bpmn:outgoing>Flow_1noodan</bpmn:outgoing>
-    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CheckTravelDataProcess">
@@ -90,16 +79,9 @@
       <bpmndi:BPMNShape id="Gateway_13kfdbz_di" bpmnElement="Gateway_00dafjc">
         <dc:Bounds x="525" y="92" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0u4bygl_di" bpmnElement="Activity_16qgbyc">
-        <dc:Bounds x="370" y="410" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0hjsqm4_di" bpmnElement="Flow_0hjsqm4">
         <di:waypoint x="215" y="117" />
         <di:waypoint x="265" y="117" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1nc27uk_di" bpmnElement="Flow_1nc27uk">
-        <di:waypoint x="575" y="117" />
-        <di:waypoint x="652" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kfwyky_di" bpmnElement="Flow_0kfwyky">
         <di:waypoint x="315" y="117" />
@@ -129,15 +111,9 @@
         <di:waypoint x="550" y="340" />
         <di:waypoint x="550" y="142" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0wpdwfv_di" bpmnElement="Flow_0wpdwfv">
-        <di:waypoint x="290" y="142" />
-        <di:waypoint x="290" y="450" />
-        <di:waypoint x="370" y="450" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1noodan_di" bpmnElement="Flow_1noodan">
-        <di:waypoint x="470" y="450" />
-        <di:waypoint x="550" y="450" />
-        <di:waypoint x="550" y="142" />
+      <bpmndi:BPMNEdge id="Flow_1nc27uk_di" bpmnElement="Flow_1nc27uk">
+        <di:waypoint x="575" y="117" />
+        <di:waypoint x="652" y="117" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
