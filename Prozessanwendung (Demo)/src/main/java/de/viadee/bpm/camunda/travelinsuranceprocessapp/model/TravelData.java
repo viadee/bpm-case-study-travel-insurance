@@ -16,6 +16,7 @@ public class TravelData {
     private LocalDate end;
     private String destination;
     private BigDecimal cost;
+    private String currency;
 
     public LocalDate getStart() {
         return start;
@@ -48,8 +49,16 @@ public class TravelData {
     public void setCost(final BigDecimal cost) {
         this.cost = cost;
     }
+    
+    public String getCurrency() {
+		return currency;
+	}
 
-    @Override
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	@Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this, NO_CLASS_NAME_STYLE, false, false, true, Object.class);
     }

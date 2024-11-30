@@ -41,6 +41,16 @@
                     <input class="form-control" type="text" id="cost" name="cost" th:field="*{travelData.cost}"/>
                     <label for="cost">Geschätzte Kosten</label>
                 </div>
+				
+				<div class="form-floating mb-3">
+					<select class="form-control" id="currency" name="currency" th:field="*{travelData.currency}">
+					    <option th:value="'EUR'" th:text="'Euro (EUR)'" selected></option>
+					    <option th:value="'USD'" th:text="'US Dollar (USD)'"></option>
+						<option th:value="'GBP'" th:text="'Britisches Pfund (GBP)'"></option>
+						<option th:value="'CHF'" th:text="'Schweizer Franken (CHF)'"></option>
+					</select>
+				    <label for="currency">Währung</label>
+				</div>
             </div>
 
             <div class="col-6">
