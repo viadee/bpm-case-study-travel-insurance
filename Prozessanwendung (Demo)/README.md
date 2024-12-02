@@ -39,7 +39,7 @@
 * Projekt in geeignete IDE importieren
 * Maven-Abhängigkeiten herunterladen
 * Umgebungsvariablen für Zeebe setzen (vgl. Zugangsdaten)
-* Prozssnamen im Modell anpassen (andernfalls überschreibt ihr euch gegenseitig das Deployment)
+* Prozssid im Modell anpassen (andernfalls überschreibt ihr euch gegenseitig das Deployment)
 * Anwendung starten
 * `http://localhost:8080` aufrufen
 
