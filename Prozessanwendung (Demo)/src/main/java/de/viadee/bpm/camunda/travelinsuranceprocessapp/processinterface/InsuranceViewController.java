@@ -25,9 +25,8 @@ public class InsuranceViewController {
         this.travelInsuranceService = travelInsuranceService;
     }
 
-
     @GetMapping("/")
-    public String main(final Model model) {
+    public String createTravelInsurance(final Model model) {
         var data = new TravelInsuranceRequest();
         data.setTravelInsurance(new TravelInsurance());
         data.getTravelInsurance().setInsuredPartners(new ArrayList<>());

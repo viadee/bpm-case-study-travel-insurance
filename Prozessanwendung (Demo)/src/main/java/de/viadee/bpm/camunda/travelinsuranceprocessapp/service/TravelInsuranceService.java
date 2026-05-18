@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import de.viadee.bpm.camunda.travelinsuranceprocessapp.model.TravelInsuranceProcessException;
 import de.viadee.bpm.camunda.travelinsuranceprocessapp.model.TravelInsuranceRequest;
-import io.camunda.zeebe.client.ZeebeClient;
+import io.camunda.client.CamundaClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -15,19 +15,19 @@ import static de.viadee.bpm.camunda.travelinsuranceprocessapp.TravelInsurancePro
 public class TravelInsuranceService {
     private static final Logger log = LoggerFactory.getLogger(TravelInsuranceService.class);
 
-    private final ZeebeClient zeebeClient;
+    private final CamundaClient camundaClient;
     private final JsonMapper jsonMapper;
 
-    public TravelInsuranceService(final ZeebeClient zeebeClient,
+    public TravelInsuranceService(final CamundaClient camundaClient,
                                   final JsonMapper jsonMapper) {
-        this.zeebeClient = zeebeClient;
+        this.camundaClient = camundaClient;
         this.jsonMapper = jsonMapper;
     }
 
 
     public long startTravelInsuranceProcess(final TravelInsuranceRequest travelInsuranceRequest) {
         log.debug("Start process-instance, using process-id '{}'", TRAVEL_INSURANCE_PROCESS_ID);
-        var processInstance = zeebeClient.newCreateInstanceCommand()
+        var processInstance = camundaClient.newCreateInstanceCommand()
                                          .bpmnProcessId(TRAVEL_INSURANCE_PROCESS_ID)
                                          .latestVersion()
                                          .variables(this.asJson(travelInsuranceRequest))

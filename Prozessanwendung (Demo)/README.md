@@ -20,15 +20,17 @@
 * Einloggen https://console.cloud.camunda.io
 * Cluster → API auswählen
 * `Create new Client`
-* Scope `Zeebe` → `Create`
+* Scope `Orchestration Cluster API` → `Create`
 * Die Zugangsdaten sind die folgenden:
   * Client Secret: Wie angezeigt
   * Client-Id: Wie angezeigt
   * Cluster-Id: Der erste Teil der Cluster-Url (`Uuid`)
   * Cloud-Region: Der zweite Teil der Cluster-Url (z.B. `dsm-1`)
+* Die Zugangsdaten können im Format für Spring Boot kopiert werden
 * Zugangsdaten als Umgebungsvariablen setzen oder in [application.properties](src/main/resources/application.properties) einfügen
   * Umgebungsvariablen
     * ```
+      mode:          ${ZB_MODE}
       cluster-id:    ${ZB_CLUSTER}  
       client-id:     ${ZB_CLIENT}  
       client-secret: ${ZB_SECRET}  
@@ -49,7 +51,7 @@
 * Anschließend wird jeweils über den [TravelInsuranceService](src/main/java/de/viadee/bpm/camunda/travelinsuranceprocessapp/service/TravelInsuranceService.java)
 eine entsprechende Prozessinstanz gestartet: 
 ```
-zeebeClient.newCreateInstanceCommand()
+camundaClient.newCreateInstanceCommand()
            .bpmnProcessId("TravelInsuranceProcess") // <- Process Id (vgl. Processmodell)
            .latestVersion().send().join();
 ```

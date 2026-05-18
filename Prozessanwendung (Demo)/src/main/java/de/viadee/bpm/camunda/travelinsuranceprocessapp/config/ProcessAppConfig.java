@@ -16,7 +16,7 @@ public class ProcessAppConfig {
         var jsonMapper = new JsonMapper();
         jsonMapper.registerModule(new JavaTimeModule());
         jsonMapper.disable(WRITE_DATES_AS_TIMESTAMPS);
-        jsonMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        jsonMapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
         return jsonMapper;
     }
 
