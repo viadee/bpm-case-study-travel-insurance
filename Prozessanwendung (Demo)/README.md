@@ -1,9 +1,9 @@
-# Beispiel-Prozessanwendung Camunda 8  
+# Beispiel-Prozessanwendung Camunda 8
 
-### Hinweis  
+### Hinweis
 > Dieses Projekt ist eine Starthilfe zur Umsetzung der Fallstudie "Reisekrankenversicherung". Es enthält  
 > nur ein unvollständiges Prozessmodell und etwas Beispielcode zur Veranschaulichung. Die vollständige  
-> Umsetzung der eigentlichen Fachlichkeit ist Teil der Fallstudie und nicht in diesem Projekt zu finden.  
+> Umsetzung der eigentlichen Fachlichkeit ist Teil der Fallstudie und nicht in diesem Projekt zu finden.
 
 ### :star: Features
 * Automatisches Deployment von Prozessmodellen im Cluster von Camunda 8
@@ -17,16 +17,7 @@
 
 ### :paperclip: How-To
 #### :key: Zugangsdaten erhalten
-* Einloggen https://console.cloud.camunda.io
-* Cluster → API auswählen
-* `Create new Client`
-* Scope `Orchestration Cluster API` → `Create`
-* Die Zugangsdaten sind die folgenden:
-  * Client Secret: Wie angezeigt
-  * Client-Id: Wie angezeigt
-  * Cluster-Id: Der erste Teil der Cluster-Url (`Uuid`)
-  * Cloud-Region: Der zweite Teil der Cluster-Url (z.B. `dsm-1`)
-* Die Zugangsdaten können im Format für Spring Boot kopiert werden
+* Die Zugangsdaten entsprechen dem Client `FA_PA_26_Client`
 * Zugangsdaten als Umgebungsvariablen setzen oder in [application.properties](src/main/resources/application.properties) einfügen
   * Umgebungsvariablen
     * ```
@@ -36,7 +27,7 @@
       client-secret: ${ZB_SECRET}  
       region:        ${ZB_REGION}
       ```
-  
+
 #### :rocket: Anwendung starten
 * Projekt in geeignete IDE importieren
 * Maven-Abhängigkeiten herunterladen
@@ -49,7 +40,7 @@
 * Formular ausfüllen und absenden, oder
 * `Post`-Request auf den Rest-Endpunkt `/api/travel-insurance` (vgl. [InsuranceRestController](src/main/java/de/viadee/bpm/camunda/travelinsuranceprocessapp/processinterface/InsuranceRestController.java))
 * Anschließend wird jeweils über den [TravelInsuranceService](src/main/java/de/viadee/bpm/camunda/travelinsuranceprocessapp/service/TravelInsuranceService.java)
-eine entsprechende Prozessinstanz gestartet: 
+  eine entsprechende Prozessinstanz gestartet:
 ```
 camundaClient.newCreateInstanceCommand()
            .bpmnProcessId("TravelInsuranceProcess") // <- Process Id (vgl. Processmodell)
@@ -62,7 +53,7 @@ camundaClient.newCreateInstanceCommand()
 
 ![operate](doc/operate.png)
 
-* Im Anwendungslog stehen die Log-Ausgaben des [JobWorker](src/main/java/de/viadee/bpm/camunda/travelinsuranceprocessapp/worker/TravelInsuranceReadInputData.java): 
+* Im Anwendungslog stehen die Log-Ausgaben des [JobWorker](src/main/java/de/viadee/bpm/camunda/travelinsuranceprocessapp/worker/TravelInsuranceReadInputData.java):
 ```
 ... d.v.b.c.t.w.TravelInsuranceReadInputData : Start 'read-input-data'... 
 ... d.v.b.c.t.w.TravelInsuranceReadInputData : input-data [type=String]: {"travelInsurance":{"travelData":{"start":"2023-01-14","end":"2023-01-22","destination":"Austria","cost":800},"policyHolder":{"id":"","firstname":"Alex","lastname":"Meyer","birthday":"2001-11-11","iban":"","mail":"","childOfPolicyHolder":false,"address":{"street":"","number":"","postCode":"","city":"","country":""},"insured":false},"insuredPartners":[],"baggageInsurance":true,"travelCancellation":true}}
